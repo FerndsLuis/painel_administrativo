@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DadosService } from '../shared/services/dados.service';
+import { Dados as DadosModel } from '../shared/models/dados.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { DadosService } from '../shared/services/dados.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  dados: Array<any> = new Array();
+  dados: Array<DadosModel> = new Array();
 
   constructor(private dadosService: DadosService) {}
 
@@ -15,5 +16,14 @@ export class DashboardComponent implements OnInit {
     this.listarDados();
   }
 
-  listarDados() {}
+  listarDados() {
+    this.dadosService.listarDados().subscribe(
+      (dados) => {
+        this.dados = dados;
+      },
+      (err) => {
+        console.log('Erro ao listar os alunos', err);
+      }
+    );
+  }
 }

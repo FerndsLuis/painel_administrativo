@@ -8,10 +8,10 @@
     <th>Concluído</th>
   </tr>
 
-  <tr>
-    <td>10</td>
-    <td>190</td>
-    <td>sed ut vero sit molestiae</td>
-    <td>false</td>
+  <tr *ngFor="let dado of dados">
+    <td>{{ dado.userId }}</td>
+    <td>{{ dado.id }}</td>
+    <td>{{ dado.title }}</td>
+    <td>{{ dado.completed }}</td>
   </tr>
 </table>
