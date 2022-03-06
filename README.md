@@ -1,27 +1,26 @@
-# PainelAdministrativo
+# <center>Painel Administrativo com Angular </center>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+<p align="center">
+  <img src="/src/app/shared/others/adm-system.png" width="350" />
+</p>
 
-## Development server
+Objetivo do projeto:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Um gráfico tipo pizza e um gráfico tipo barra contendo um comparativo entre tarefas concluídas e pendentes
 
-## Code scaffolding
+- Uma listagem de posts em tabela, contendo um filtro de posts por usuário
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Na listagem de posts deve conter um botão de edição que deve abrir um modal para editar o título do post
 
-## Build
+## Ferramentas utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 12
+- Material Angular
+- Apexcharts
+- API: https://jsonplaceholder.typicode.com/todos
 
-## Running unit tests
+## Como clonar?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    git clone https://github.com/FerndsLuis/painel_administrativo.git
+    npm i
+    ng server
