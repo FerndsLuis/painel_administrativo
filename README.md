@@ -1,7 +1,7 @@
 # <center>Painel Administrativo com Angular </center>
 
 <p align="center">
-  <img src="/src/app/shared/others/adm-system.png" width="350" />
+  <img src="/src/app/shared/others/adm-system.png" width="650" />
 </p>
 
 Objetivo do projeto:
