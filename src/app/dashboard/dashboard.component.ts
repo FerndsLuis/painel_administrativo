@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DadosService } from '../shared/services/dados.service';
 import { Dados as DadosModel } from '../shared/models/dados.model';
-import { identifierModuleUrl } from '@angular/compiler';
+
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { ModalComponent } from '../shared/modals/modal/modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +21,7 @@ export class DashboardComponent implements OnInit {
   idUsuarios: Array<DadosModel> = new Array();
   idBusca?: number;
 
-  constructor(private dadosService: DadosService) {}
+  constructor(private dadosService: DadosService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.listarDados();
@@ -30,7 +36,7 @@ export class DashboardComponent implements OnInit {
         );
       },
       (err) => {
-        console.log('Erro ao listar os alunos', err);
+        console.log('Erro ao listar', err);
       }
     );
   }
@@ -57,18 +63,6 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  atualizarDados(id: any) {
-    this.dadosService.atualizarDado(id, this.dado).subscribe(
-      (dado) => {
-        this.dado = new DadosModel();
-        this.listarDados();
-      },
-      (err) => {
-        console.log('Erro ao atualizar dado: ', err);
-      }
-    );
-  }
-
   removerDados(id: any) {
     this.dadosService.removerAluno(id).subscribe(
       (dado) => {
@@ -79,5 +73,33 @@ export class DashboardComponent implements OnInit {
         console.log('Erro ao remover dado: ', err);
       }
     );
+  }
+
+  listarDado(id: any) {
+    this.dadosService.listarDadoId(id).subscribe(
+      (dado) => {
+        this.dado = dado;
+        this.abrirModel();
+        console.log(this.dado);
+      },
+      (err) => {
+        console.log('Erro ao listar dado', err);
+      }
+    );
+  }
+
+  abrirModel(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '250px',
+      data: this.dado,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('closed', this.dado.id);
+      this.dados = [];
+      this.dado = new DadosModel();
+      Array();
+      this.listarDados();
+    });
   }
 }

@@ -3,9 +3,9 @@
 
   <form>
     id:
-    <input type="number" name="id" [(ngModel)]="dado.id" disabled />
+    <input type="number" name="id" (ngModel)="(dado.id)" disabled />
     Id do usuário:
-    <input type="number" name="idUsuario" [(ngModel)]="dado.userId" />
+    <input type="number" name="idUsuario" [(ngModel)]git="dado.userId" />
     Título:
     <input type="text" name="titulo" [(ngModel)]="dado.title" />
     Concluído:
@@ -19,6 +19,8 @@
 
 <section>
   <h1>Listar os dados da API:</h1>
+
+  <hr />
 
   <span>Buscar por ID:</span>
   <select ngModel (ngModelChange)="buscarUsuario($event)">
@@ -42,7 +44,7 @@
       <td>{{ dado.title }}</td>
       <td>{{ dado.completed }}</td>
       <td>
-        <button (click)="atualizarDados(dado.id)">Atualizar</button>
+        <button (click)="listarDado(dado.id)">Atualizar</button>
       </td>
       <td>
         <button (click)="removerDados(dado.id)">Remover</button>
@@ -63,7 +65,7 @@
       <td>{{ dado.title }}</td>
       <td>{{ dado.completed }}</td>
       <td>
-        <button (click)="atualizarDados(dado.id)">Atualizar</button>
+        <button (click)="listarDado(dado.id)">Atualizar</button>
       </td>
       <td>
         <button (click)="removerDados(dado.id)">Remover</button>

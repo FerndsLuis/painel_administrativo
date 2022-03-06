@@ -1,0 +1,20 @@
+<section>
+  <h1>Atualizar dados</h1>
+  <form>
+    id:
+    <input type="number" name="id" [(ngModel)]="dado.id" disabled />
+    Id do usuário:
+    <input type="number" name="idUsuario" [(ngModel)]="dado.userId" />
+    Título:
+    <input type="text" name="titulo" [(ngModel)]="dado.title" />
+    Concluído:
+    <select name="select" [(ngModel)]="dado.completed">
+      <option [ngValue]="false" value="false" selected="selected">Não</option>
+      <option [ngValue]="true" value="true">Sim</option>
+    </select>
+    <div>
+      <button type="button" (click)="atualizarDados(dado.id)">Atualizar</button>
+      <button mat-button (click)="cancelar()">Fechar</button>
+    </div>
+  </form>
+</section>

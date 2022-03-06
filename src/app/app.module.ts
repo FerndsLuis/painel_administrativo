@@ -7,10 +7,20 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { DadosService } from './shared/services/dados.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './shared/modals/modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent, DashboardComponent, ModalComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+  ],
   providers: [HttpClientModule, DadosService],
   bootstrap: [AppComponent],
 })

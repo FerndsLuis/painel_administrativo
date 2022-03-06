@@ -17,6 +17,10 @@ export class DadosService {
     return this.http.get(environment.API_URL);
   }
 
+  listarDadoId(id: any): Observable<any> {
+    return this.http.get(environment.API_URL.concat(id));
+  }
+
   cadastrarDado(dado: DadosModel): Observable<any> {
     return this.http.post(environment.API_URL, dado);
   }
