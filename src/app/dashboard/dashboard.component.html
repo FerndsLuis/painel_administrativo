@@ -1,17 +1,73 @@
-<h1>Dados</h1>
+<section>
+  <h1>Cadastrar Dados</h1>
 
-<table>
-  <tr>
-    <th>Id do usuário</th>
-    <th>id</th>
-    <th>Título</th>
-    <th>Concluído</th>
-  </tr>
+  <form>
+    id:
+    <input type="number" name="id" [(ngModel)]="dado.id" disabled />
+    Id do usuário:
+    <input type="number" name="idUsuario" [(ngModel)]="dado.userId" />
+    Título:
+    <input type="text" name="titulo" [(ngModel)]="dado.title" />
+    Concluído:
+    <select name="select" [(ngModel)]="dado.completed">
+      <option [ngValue]="false" value="false" selected="selected">Não</option>
+      <option [ngValue]="true" value="true">Sim</option>
+    </select>
+    <button type="button" (click)="cadastrar()">Cadastrar</button>
+  </form>
+</section>
 
-  <tr *ngFor="let dado of dados">
-    <td>{{ dado.userId }}</td>
-    <td>{{ dado.id }}</td>
-    <td>{{ dado.title }}</td>
-    <td>{{ dado.completed }}</td>
-  </tr>
-</table>
+<section>
+  <h1>Listar os dados da API:</h1>
+
+  <span>Buscar por ID:</span>
+  <select ngModel (ngModelChange)="buscarUsuario($event)">
+    <option value="" selected>Nenhum!</option>
+    <option *ngFor="let id of idUsuarios" [value]="id.userId">
+      {{ id.userId }}
+    </option>
+  </select>
+
+  <table *ngIf="dadosFiltrado.length == 0">
+    <tr>
+      <th>id</th>
+      <th>Id do usuário</th>
+      <th>Título</th>
+      <th>Concluído</th>
+      <th colspan="2">Ações</th>
+    </tr>
+    <tr *ngFor="let dado of dados">
+      <td>{{ dado.id }}</td>
+      <td>{{ dado.userId }}</td>
+      <td>{{ dado.title }}</td>
+      <td>{{ dado.completed }}</td>
+      <td>
+        <button (click)="atualizarDados(dado.id)">Atualizar</button>
+      </td>
+      <td>
+        <button (click)="removerDados(dado.id)">Remover</button>
+      </td>
+    </tr>
+  </table>
+  <table *ngIf="dadosFiltrado.length > 0">
+    <tr>
+      <th>id</th>
+      <th>Id do usuário</th>
+      <th>Título</th>
+      <th>Concluído</th>
+      <th colspan="2">Ações</th>
+    </tr>
+    <tr *ngFor="let dado of dadosFiltrado">
+      <td>{{ dado.id }}</td>
+      <td>{{ dado.userId }}</td>
+      <td>{{ dado.title }}</td>
+      <td>{{ dado.completed }}</td>
+      <td>
+        <button (click)="atualizarDados(dado.id)">Atualizar</button>
+      </td>
+      <td>
+        <button (click)="removerDados(dado.id)">Remover</button>
+      </td>
+    </tr>
+  </table>
+</section>
