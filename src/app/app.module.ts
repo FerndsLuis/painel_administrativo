@@ -13,6 +13,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './shared/modals/modal/modal.component';
 import { DashboardGraficosComponent } from './dashboard-graficos/dashboard-graficos.component';
 import { routing } from './app.routing';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { DashboardGraficosPizzaComponent } from './dashboard-graficos-pizza/dashboard-graficos-pizza.component';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { routing } from './app.routing';
     DashboardComponent,
     ModalComponent,
     DashboardGraficosComponent,
+    DashboardGraficosPizzaComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,9 @@ import { routing } from './app.routing';
     BrowserAnimationsModule,
     MatDialogModule,
     routing,
+    NgApexchartsModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [HttpClientModule, DadosService],
   bootstrap: [AppComponent],
